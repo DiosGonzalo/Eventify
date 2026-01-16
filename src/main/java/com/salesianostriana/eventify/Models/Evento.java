@@ -15,7 +15,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Asistente {
+public class Evento {
     @Id@GeneratedValue
     private Long id;
     private String titulo;
@@ -30,7 +30,7 @@ public class Asistente {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Asistente asistente = (Asistente) o;
+        Evento asistente = (Evento) o;
         return getId() != null && Objects.equals(getId(), asistente.getId());
     }
 

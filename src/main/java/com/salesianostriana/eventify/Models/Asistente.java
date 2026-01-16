@@ -1,11 +1,11 @@
 package com.salesianostriana.eventify.Models;
 
-import com.salesianostriana.eventify.Models.Enums.Estado;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -15,16 +15,12 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Entrada {
-    @Id@GeneratedValue
+public class Asistente {
+    @Id
+    @GeneratedValue
     private Long id;
-    private LocalDate fechaCompra;
-    private Estado estado;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Evento evento;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Asistente asistente;
+    private  String nombre;
+    private String email;
 
     @Override
     public final boolean equals(Object o) {
@@ -33,8 +29,8 @@ public class Entrada {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Entrada entrada = (Entrada) o;
-        return getId() != null && Objects.equals(getId(), entrada.getId());
+        Asistente asistente = (Asistente) o;
+        return getId() != null && Objects.equals(getId(), asistente.getId());
     }
 
     @Override
